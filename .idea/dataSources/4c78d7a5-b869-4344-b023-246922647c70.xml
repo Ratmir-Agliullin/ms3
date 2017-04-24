@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-04-24.21:26:58.448</IntrospectionTimestamp>
-      <IntrospectionStateNumber>630</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-04-24.22:33:48.699</IntrospectionTimestamp>
+      <IntrospectionStateNumber>631</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -73,7 +73,7 @@
     </table>
     <table id="17" parent="3" name="productstable">
       <ObjectId>16915</ObjectId>
-      <StateNumber>604</StateNumber>
+      <StateNumber>631</StateNumber>
     </table>
     <table id="18" parent="3" name="users">
       <ObjectId>16904</ObjectId>
@@ -215,18 +215,23 @@
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <index id="42" parent="17" name="product_pkey">
+    <column id="42" parent="17" name="price">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>631</StateNumber>
+    </column>
+    <index id="43" parent="17" name="product_pkey">
       <ObjectId>16919</ObjectId>
       <ColNames>pt_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="43" parent="17" name="product_pkey">
+    <key id="44" parent="17" name="product_pkey">
       <ObjectId>16920</ObjectId>
       <ColNames>pt_id</ColNames>
       <UnderlyingIndexName>product_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="44" parent="18" name="user_id">
+    <column id="45" parent="18" name="user_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -234,22 +239,22 @@
       <SequenceName>users_user_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="45" parent="18" name="user_name">
+    <column id="46" parent="18" name="user_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="46" parent="18" name="user_pass">
+    <column id="47" parent="18" name="user_pass">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <index id="47" parent="18" name="user_pkey">
+    <index id="48" parent="18" name="user_pkey">
       <ObjectId>16911</ObjectId>
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="48" parent="18" name="user_pkey">
+    <key id="49" parent="18" name="user_pkey">
       <ObjectId>16912</ObjectId>
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>

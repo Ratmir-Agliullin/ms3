@@ -1,5 +1,7 @@
 package main.servlets;
 
+import main.DAO.ProductsTable;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,10 @@ public class UserInfoServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ProductsTable productsTable = new ProductsTable();
 
-        req.getRequestDispatcher("/userInfo.jsp").forward(req,resp);
+        req.setAttribute("products",productsTable.SelectProductsTable());
+        getServletContext().getRequestDispatcher("/userInfo.jsp").forward(req,resp);
     }
 
     @Override
