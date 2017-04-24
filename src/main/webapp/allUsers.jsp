@@ -25,7 +25,8 @@ ${list}<br>
         <td><a href="/deleteUser?value=${users.id}">Удалить пользователя</a> </td>
         <br>
         </tr>
-</c:forEach>
-<input onclick="location.href='/logOut.jsp'" type="submit" value="logout" style="float: right;">
+</c:forEach><br>
+<a href="/deleteUser?value=${users.id}">Удалить пользователя</a>
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
 </body>
 </html>

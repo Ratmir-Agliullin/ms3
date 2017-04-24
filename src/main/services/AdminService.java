@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class AdminService {
 
     /**
-     *
      * Authorization for admins
+     *
      * @param login
      * @param pass
      * @return
@@ -22,7 +22,7 @@ public class AdminService {
         AdminDAO adminDAO = new AdminDAO();
         ArrayList<Admin> userTableAL = new ArrayList<Admin>();
 
-        for (Admin admin:adminDAO.SelectAdminTable()
+        for (Admin admin : adminDAO.SelectAdminTable()
                 ) {
 
             if ((admin.getAdminName().equals(login)) && (admin.getAdminPass().equals(pass))) {
@@ -30,6 +30,24 @@ public class AdminService {
                 return true;
             }
 
-        }  return false;
+        }
+        return false;
+    }
+
+
+    public boolean AdminLoginRepeatCheck(String login) {
+
+        AdminDAO adminDAO = new AdminDAO();
+
+        for (Admin admin : adminDAO.SelectAdminTable()
+                ) {
+
+            if (admin.getAdminName().equals(login)) {
+
+                return true;
+            }
+
+        }
+        return false;
     }
 }
