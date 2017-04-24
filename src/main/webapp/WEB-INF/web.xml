@@ -22,4 +22,75 @@
     <servlet-name>EditServlet</servlet-name>
     <url-pattern>/edit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AllUsersServlet</servlet-name>
+    <servlet-class>main.servlets.allUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllUsersServlet</servlet-name>
+    <url-pattern>/allUsers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>main.servlets.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/deleteUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserInfo</servlet-name>
+    <servlet-class>main.servlets.UserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInfo</servlet-name>
+    <url-pattern>/userInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>NewUserAdd</servlet-name>
+    <servlet-class>main.servlets.NewUserAdd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewUserAdd</servlet-name>
+    <url-pattern>/newUserAdd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddedUser</servlet-name>
+    <servlet-class>main.servlets.AddedUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddedUser</servlet-name>
+    <url-pattern>/newUserAdded</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>CurrentFilter</filter-name>
+    <filter-class>main.Filters.CurrentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CurrentFilter</filter-name>
+    <url-pattern>/userInfo</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>main.Filters.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/allUsers</url-pattern>
+      </filter-mapping>
+  <servlet>
+    <servlet-name>RepeatLoginUser</servlet-name>
+    <servlet-class>main.servlets.RepeatLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RepeatLoginUser</servlet-name>
+    <url-pattern>/repeatLoginUser</url-pattern>
+  </servlet-mapping>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/Kurs4</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
 </web-app>

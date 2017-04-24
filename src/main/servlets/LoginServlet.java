@@ -1,5 +1,8 @@
 package main.servlets;
 
+import main.services.AdminService;
+import main.services.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,19 +12,38 @@ import java.io.IOException;
 /**
  * Created by admin on 20.04.2017.
  */
+//@WebServlet(urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
+       req.getRequestDispatcher("/login.jsp").forward(req,resp);
+
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login=(String) req.getAttribute("login");
+        String pass = req.getParameter("password");
+        String login = req.getParameter("username");
 
-        req.getSession().setAttribute("name",login);
-        resp.sendRedirect(req.getContextPath()+"/edit");
+        UserService userService = new UserService();
+        AdminService adminService = new AdminService();
+        String checkUserAdmin = "Не авторизованный пользователь. Авторизуйтесь!";
+        String afterAuthURL = "/newUserAdd";
+        if (userService.UserAuthCheck(login,pass)){
+            checkUserAdmin = "Пользователь";
+            afterAuthURL = "/userInfo";
+        }
+        if (adminService.AdminAuthCheck(login,pass)) {
+            checkUserAdmin = "Администратор";
+            afterAuthURL = "/allUsers";
+        }
+        if(userService.UserLoginRepeatCheck(login)==true){
+            req.getSession().setAttribute("check", "Ваш логин уже есть в списке пользователей. Выберете другой логин");
+                afterAuthURL = "/repeatLoginUser";
+        }
+        req.getSession().setAttribute("check", checkUserAdmin);
+        resp.sendRedirect(req.getContextPath() + afterAuthURL);
     }
 }

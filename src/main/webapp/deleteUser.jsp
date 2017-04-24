@@ -1,20 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: admin
-  Date: 20.04.2017
-  Time: 22:56
+  Date: 22.04.2017
+  Time: 22:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Edit</title>
+    <title>Удалить пользователя</title>
 </head>
 <body>
-Редактировать будем здесь<br>
-
-${list}
-1657
+${id}<br>
+2327
 </body>
 </html>
