@@ -11,6 +11,13 @@ import java.util.logging.Logger;
  */
 public class AdminDAO implements AdminInteface {
     private static Logger log = Logger.getLogger(AdminDAO.class.getName());
+
+    /**
+     *
+     * @return connection
+     */
+
+
     public Connection initConnection(){
 
         Connection connection = null;
@@ -19,16 +26,18 @@ public class AdminDAO implements AdminInteface {
             try {
                 connection =  cp.getConnection();
             } catch (SQLException e) {
-                e.printStackTrace();
+                log.info(e.toString());
             }
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.info(e.toString());
         }
 
         return connection;
     }
 
-
+    /**
+     * update table in sql
+     */
     public void UpdateAdminTable() {
 
     }
@@ -49,6 +58,9 @@ public class AdminDAO implements AdminInteface {
         }
     }
 
+    /**
+     * Delete table
+     */
     public void DeleteAdminTable() {
         Connection connection = initConnection();
         try {
@@ -64,6 +76,11 @@ public class AdminDAO implements AdminInteface {
 
     }
 
+
+    /**
+     *
+     * @param userTable insert new empty in table
+     */
     public void InsertAdminTable(Admin userTable) {
         Connection connection = initConnection();
         try {
@@ -79,6 +96,11 @@ public class AdminDAO implements AdminInteface {
         }
     }
 
+
+    /**
+     *
+     * @return arraylist of all recors in table
+     */
     public ArrayList<Admin> SelectAdminTable() {
         Connection connection = initConnection();
         ArrayList<Admin> userTableAL = new ArrayList<Admin>();
@@ -99,5 +121,29 @@ public class AdminDAO implements AdminInteface {
         }
         return userTableAL;
 
+    }
+
+    /**
+     *
+     *
+     * @param login
+     * @return password, where login = login
+     */
+    public String SelectAdminPassTable(String login){
+        Connection connection = initConnection();
+        String resultPass=null;
+
+        try {
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select admin_pass from public.admins where admin_name = ?");
+            preparedStatement.setString(1, login);
+            ResultSet result = preparedStatement.executeQuery();
+            resultPass = result.getString(1);
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return resultPass;
     }
 }

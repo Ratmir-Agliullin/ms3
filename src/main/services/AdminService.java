@@ -9,6 +9,14 @@ import java.util.ArrayList;
  * Created by admin on 23.04.2017.
  */
 public class AdminService {
+
+    /**
+     *
+     * Authorization for admins
+     * @param login
+     * @param pass
+     * @return
+     */
     public boolean AdminAuthCheck(String login, String pass) {
         boolean check = false;
         AdminDAO adminDAO = new AdminDAO();

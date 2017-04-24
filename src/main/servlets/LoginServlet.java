@@ -14,9 +14,17 @@ import java.io.IOException;
  */
 //@WebServlet(urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
-
+    /**
+     *
+     * Login for users and admins
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
        req.getRequestDispatcher("/login.jsp").forward(req,resp);
 
 
@@ -34,15 +42,16 @@ public class LoginServlet extends HttpServlet {
         if (userService.UserAuthCheck(login,pass)){
             checkUserAdmin = "Пользователь";
             afterAuthURL = "/userInfo";
-        }
+        } else
         if (adminService.AdminAuthCheck(login,pass)) {
             checkUserAdmin = "Администратор";
             afterAuthURL = "/allUsers";
-        }
+        } else
         if(userService.UserLoginRepeatCheck(login)==true){
             req.getSession().setAttribute("check", "Ваш логин уже есть в списке пользователей. Выберете другой логин");
                 afterAuthURL = "/repeatLoginUser";
         }
+
         req.getSession().setAttribute("check", checkUserAdmin);
         resp.sendRedirect(req.getContextPath() + afterAuthURL);
     }

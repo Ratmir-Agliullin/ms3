@@ -13,6 +13,10 @@ import java.io.IOException;
  */
 public class DeleteUserServlet extends HttpServlet {
     @Override
+/**
+ *
+ * Delete users
+ */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      String[] id =    req.getParameterValues("value");
         req.setAttribute("id",id[0]);

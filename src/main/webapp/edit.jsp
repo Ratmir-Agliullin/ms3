@@ -16,5 +16,7 @@
 
 ${list}
 1657
+
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
 </body>
 </html>

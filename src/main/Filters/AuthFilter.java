@@ -11,7 +11,12 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
 
-
+    /**
+     *
+     * Filter for admins
+     * @param filterConfig
+     * @throws ServletException
+     */
 
     public void init(FilterConfig filterConfig) throws ServletException {
 

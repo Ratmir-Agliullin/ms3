@@ -2,6 +2,7 @@ package main.services;
 
 import main.DAO.UsersDAO;
 import main.models.Users;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,15 @@ import java.util.ArrayList;
  * Created by admin on 22.04.2017.
  */
 public class UserService {
+
+    /**
+     *
+     *
+     * Authorization for admins
+     * @param login
+     * @param pass
+     * @return
+     */
     public boolean UserAuthCheck(String login, String pass) {
         boolean check = false;
         UsersDAO usersDAO = new UsersDAO();
@@ -17,12 +27,12 @@ public class UserService {
         for (Users user:usersDAO.SelectUserTable()
              ) {
 
-                         if ((user.getUserName().equals(login)) && (user.getPassName().equals(pass))) {
-
+                       //  if ((user.getUserName().equals(login)) && (BCrypt.checkpw(pass,user.getPassName()))) {
+            if ((user.getUserName().equals(login)) && (BCrypt.checkpw(pass,user.getPassName()))) {
                 return true;
             }
 
-        }  return false;
+        }return false;
     }
     public boolean UserLoginRepeatCheck(String login) {
 
@@ -36,7 +46,15 @@ public class UserService {
                 return true;
             }
 
-        }  return false;
+        }
+        return false;
+    }
+    public String UserPassCheck(String login) {
+
+        UsersDAO usersDAO = new UsersDAO();
+
+
+      return usersDAO.SelectUserPassTable(login);
     }
 
 

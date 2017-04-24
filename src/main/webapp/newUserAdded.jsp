@@ -13,5 +13,6 @@
 <body>
 ${newuser}<br>
 <a href="/login">Авторизоваться</a>
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
 </body>
 </html>

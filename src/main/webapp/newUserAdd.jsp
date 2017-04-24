@@ -12,10 +12,11 @@
 </head>
 <body>
 Добавьте ваши логин и пароль:<br>
-<form action  = "/newUserAdd" method="post">
+<form action  = "/newUserAdd" method="post" style="display: inline">
     <input type = "text" name = "username"/><br>
     <input type = "text" name = "password"/><br>
     <input type = "submit" value="login">
 </form>
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
 </body>
 </html>

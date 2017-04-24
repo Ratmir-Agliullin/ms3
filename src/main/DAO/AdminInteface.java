@@ -16,6 +16,6 @@ public interface AdminInteface {
     public void InsertAdminTable();
 
     void InsertAdminTable(Admin userTable);
-
+    public String SelectAdminPassTable(String login);
     public ArrayList<Admin> SelectAdminTable();
 }

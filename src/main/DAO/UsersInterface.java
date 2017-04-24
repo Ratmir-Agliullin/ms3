@@ -15,7 +15,7 @@ public interface UsersInterface {
 
     public void DeleteUserTable(int id);
     public void InsertUserTable();
-
+    public String SelectUserPassTable(String login);
     void InsertUserTable(Users userTable);
     public void DeleteAllUserTable();
     public List<Users> SelectUserTable();

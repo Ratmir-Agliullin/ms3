@@ -13,6 +13,9 @@ import java.io.IOException;
  */
 public class allUsersServlet extends HttpServlet {
     @Override
+    /**
+     * See all users list
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UsersDAO usersDAO = new UsersDAO();

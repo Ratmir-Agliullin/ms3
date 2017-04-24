@@ -12,6 +12,7 @@
 </head>
 <body>
 ${check}<br>
-
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
+</form>
 </body>
 </html>

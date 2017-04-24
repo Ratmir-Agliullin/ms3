@@ -42,6 +42,14 @@
     <servlet-name>UserInfo</servlet-name>
     <servlet-class>main.servlets.UserInfoServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LogOut</servlet-name>
+    <servlet-class>main.servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOut</servlet-name>
+    <url-pattern>/logOut</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UserInfo</servlet-name>
     <url-pattern>/userInfo</url-pattern>

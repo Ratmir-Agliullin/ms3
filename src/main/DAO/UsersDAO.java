@@ -12,12 +12,18 @@ import java.util.logging.Logger;
  */
 public class UsersDAO implements UsersInterface{
     private static Logger log = Logger.getLogger(UsersDAO.class.getName());
+
+    /**
+     *
+     * @return connection with dataBase
+     */
+
     public Connection initConnection() {
 
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.info(e.toString());
         } finally {
 
         }
@@ -25,11 +31,16 @@ public class UsersDAO implements UsersInterface{
         try {
             connection = DriverManager.getConnection("jdbc:postgresql://localhost/Kurs4", "postgres", "Kbctyrjgbljh48");
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.info(e.toString());
         }
 
         return connection;
     }
+
+    /**
+     *
+     * Update table
+     */
 
     public void UpdateUserTable() {
 
@@ -51,6 +62,11 @@ public class UsersDAO implements UsersInterface{
         }
     }
 
+    /**
+     *
+     *
+     * @param id Delete user which has user_id = id from table
+     */
     public void DeleteUserTable(int id) {
         Connection connection = initConnection();
         try {
@@ -63,6 +79,11 @@ public class UsersDAO implements UsersInterface{
         }
     }
 
+
+    /**
+     *
+     * delete all users
+     */
     public void DeleteAllUserTable() {
         Connection connection = initConnection();
         try {
@@ -78,6 +99,13 @@ public class UsersDAO implements UsersInterface{
 
     }
 
+
+    /**
+     *
+     *
+     * Insert new user in table
+     * @param userTable
+     */
     public void InsertUserTable(Users userTable) {
        Connection connection = initConnection();
         try {
@@ -105,6 +133,12 @@ public class UsersDAO implements UsersInterface{
         }
     }
 
+    /**
+     *
+     *
+     * Get List consist of records users
+     * @return
+     */
     public List<Users> SelectUserTable() {
         Connection connection = initConnection();
         List<Users> userTableAL = new ArrayList<Users>();
@@ -125,7 +159,23 @@ public class UsersDAO implements UsersInterface{
             log.info(e.toString());
         }
         return userTableAL;
+    }
+
+    public String SelectUserPassTable(String login) {
+        Connection connection = initConnection();
+       String resultPass=null;
+
+        try {
 
 
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "select user_pass from public.users where user_name = ?");
+            preparedStatement.setString(1, login);
+            ResultSet result = preparedStatement.executeQuery();
+            resultPass = result.getString(1);
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return resultPass;
     }
 }

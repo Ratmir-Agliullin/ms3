@@ -10,6 +10,13 @@ import java.io.IOException;
  */
 
 public class CurrentFilter implements Filter {
+
+    /**
+     *
+     * Filter for users
+     * @param filterConfig
+     * @throws ServletException
+     */
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }

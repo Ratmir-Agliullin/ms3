@@ -13,5 +13,6 @@
 <body>
 ${id}<br>
 2327
+<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
 </body>
 </html>

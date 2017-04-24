@@ -26,6 +26,6 @@ ${list}<br>
         <br>
         </tr>
 </c:forEach>
-
+<input onclick="location.href='/logOut.jsp'" type="submit" value="logout" style="float: right;">
 </body>
 </html>
