@@ -13,6 +13,6 @@
 <body>
 ${newuser}<br>
 <a href="/login">Авторизоваться</a>
-<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
+<input onclick="location.href='/logOut'"  class="login loginmodal-submit" type="submit" value="logout" style="float: right;">
 </body>
 </html>

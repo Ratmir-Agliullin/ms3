@@ -27,6 +27,6 @@ ${list}<br>
         </tr>
 </c:forEach><br>
 <a href="/deleteUser?value=${users.id}">Удалить пользователя</a>
-<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
+<input onclick="location.href='/logOut'"   class="login loginmodal-submit" type="submit" value="logout" style="float: right;">
 </body>
 </html>

@@ -14,6 +14,6 @@
 Ваш пароль неверный или пользователь под таким логином уже зарегистрирован.<br>
 Попробуйте еще раз.<br>
 <a href="/login">Авторизоваться</a>
-<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
+<input onclick="location.href='/logOut'" type="submit" class="login loginmodal-submit" value="logout" style="float: right;">
 </body>
 </html>

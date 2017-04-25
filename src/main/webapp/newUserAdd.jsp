@@ -41,7 +41,7 @@
     <input type = "password" name = "password" id = "pass"/><br>
     <input type = "submit" value="login">
 </form>
-<input onclick="location.href='/logOut'" type="submit" value="logout" style="float: right;">
+<input onclick="location.href='/logOut'"   class="login loginmodal-submit" type="submit" value="logout" style="float: right;">
 </body>
 
 </html>
