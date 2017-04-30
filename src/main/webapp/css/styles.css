@@ -1,21 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
-@Ratmir-Agliullin
-Sign out
-Watch 1
-Star 0
-Fork 0 viktorkorogoda/programlearn
-Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathprogramlearn/src/main/webapp/css/styles.css
-ea68318  3 days ago
-@viktorkorogoda viktorkorogoda paging, login and registration controller
-1 contributor
-RawBlameHistory
-203 lines (176 sloc)  4.04 KB
+
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
@@ -218,4 +201,9 @@ li {
 
 .login-help{
     font-size: 12px;
+}
+
+
+td {
+    border: 4px double black;
 }
