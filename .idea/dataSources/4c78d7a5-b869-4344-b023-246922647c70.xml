@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-04-24.22:33:48.699</IntrospectionTimestamp>
-      <IntrospectionStateNumber>631</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-05-10.14:35:21.014</IntrospectionTimestamp>
+      <IntrospectionStateNumber>747</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -29,57 +29,67 @@
     <schema id="8" parent="2" name="information_schema">
       <ObjectId>12113</ObjectId>
     </schema>
-    <sequence id="9" parent="3" name="admins_admin_id_seq">
+    <sequence id="9" parent="3" name="user_role_user_role_id_seq">
+      <ObjectId>25037</ObjectId>
+      <StateNumber>730</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="10" parent="3" name="admins_admin_id_seq">
       <ObjectId>16947</ObjectId>
       <StateNumber>605</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="10" parent="3" name="orderstable_ot_id_seq">
+    <sequence id="11" parent="3" name="orderstable_ot_id_seq">
       <ObjectId>16921</ObjectId>
       <StateNumber>604</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="11" parent="3" name="productsinordertable_ptio_id_seq">
+    <sequence id="12" parent="3" name="productsinordertable_ptio_id_seq">
       <ObjectId>16934</ObjectId>
       <StateNumber>604</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="12" parent="3" name="productstable_pt_id_seq">
+    <sequence id="13" parent="3" name="productstable_pt_id_seq">
       <ObjectId>16913</ObjectId>
       <StateNumber>604</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="13" parent="3" name="users_user_id_seq">
+    <sequence id="14" parent="3" name="users_user_id_seq">
       <ObjectId>16902</ObjectId>
       <StateNumber>604</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <table id="14" parent="3" name="admins">
+    <table id="15" parent="3" name="admins">
       <ObjectId>16949</ObjectId>
       <StateNumber>605</StateNumber>
     </table>
-    <table id="15" parent="3" name="orderstable">
+    <table id="16" parent="3" name="orderstable">
       <ObjectId>16923</ObjectId>
       <StateNumber>630</StateNumber>
     </table>
-    <table id="16" parent="3" name="productsinordertable">
+    <table id="17" parent="3" name="productsinordertable">
       <ObjectId>16936</ObjectId>
       <StateNumber>604</StateNumber>
     </table>
-    <table id="17" parent="3" name="productstable">
+    <table id="18" parent="3" name="productstable">
       <ObjectId>16915</ObjectId>
       <StateNumber>631</StateNumber>
     </table>
-    <table id="18" parent="3" name="users">
+    <table id="19" parent="3" name="user_role">
+      <ObjectId>25039</ObjectId>
+      <StateNumber>730</StateNumber>
+    </table>
+    <table id="20" parent="3" name="users">
       <ObjectId>16904</ObjectId>
       <StateNumber>604</StateNumber>
     </table>
-    <column id="19" parent="14" name="admin_id">
+    <column id="21" parent="15" name="admin_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -87,28 +97,28 @@
       <SequenceName>admins_admin_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;admins_admin_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="20" parent="14" name="admin_name">
+    <column id="22" parent="15" name="admin_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>605</StateNumber>
     </column>
-    <column id="21" parent="14" name="admin_pass">
+    <column id="23" parent="15" name="admin_pass">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>605</StateNumber>
     </column>
-    <index id="22" parent="14" name="admin_pkey">
+    <index id="24" parent="15" name="admin_pkey">
       <ObjectId>16956</ObjectId>
       <ColNames>admin_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="23" parent="14" name="admin_pkey">
+    <key id="25" parent="15" name="admin_pkey">
       <ObjectId>16957</ObjectId>
       <ColNames>admin_id</ColNames>
       <UnderlyingIndexName>admin_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="24" parent="15" name="ot_id">
+    <column id="26" parent="16" name="ot_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -116,51 +126,51 @@
       <SequenceName>orderstable_ot_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;orderstable_ot_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="25" parent="15" name="user_name_id">
+    <column id="27" parent="16" name="user_name_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="26" parent="15" name="result_price">
+    <column id="28" parent="16" name="result_price">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="27" parent="15" name="time_order">
+    <column id="29" parent="16" name="time_order">
       <Position>4</Position>
       <DataType>bigint|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="28" parent="15" name="status">
+    <column id="30" parent="16" name="status">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="29" parent="15" name="ordername">
+    <column id="31" parent="16" name="ordername">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>630</StateNumber>
     </column>
-    <index id="30" parent="15" name="order_pkey">
+    <index id="32" parent="16" name="order_pkey">
       <ObjectId>16927</ObjectId>
       <ColNames>ot_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="31" parent="15" name="order_pkey">
+    <key id="33" parent="16" name="order_pkey">
       <ObjectId>16928</ObjectId>
       <ColNames>ot_id</ColNames>
       <UnderlyingIndexName>order_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="32" parent="15" name="ot_usertable_ordertable">
+    <foreign-key id="34" parent="16" name="ot_usertable_ordertable">
       <ObjectId>16929</ObjectId>
       <ColNames>user_name_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefKeyName>user_pkey</RefKeyName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <column id="33" parent="16" name="ptio_id">
+    <column id="35" parent="17" name="ptio_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -168,41 +178,41 @@
       <SequenceName>productsinordertable_ptio_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;productsinordertable_ptio_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="34" parent="16" name="ordername_id">
+    <column id="36" parent="17" name="ordername_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="35" parent="16" name="productname">
+    <column id="37" parent="17" name="productname">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="36" parent="16" name="price">
+    <column id="38" parent="17" name="price">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <index id="37" parent="16" name="productio_pkey">
+    <index id="39" parent="17" name="productio_pkey">
       <ObjectId>16940</ObjectId>
       <ColNames>ptio_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="38" parent="16" name="productio_pkey">
+    <key id="40" parent="17" name="productio_pkey">
       <ObjectId>16941</ObjectId>
       <ColNames>ptio_id</ColNames>
       <UnderlyingIndexName>productio_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="39" parent="16" name="pt_inorder_ordertable">
+    <foreign-key id="41" parent="17" name="pt_inorder_ordertable">
       <ObjectId>16942</ObjectId>
       <ColNames>ordername_id</ColNames>
       <RefTableName>orderstable</RefTableName>
       <RefKeyName>order_pkey</RefKeyName>
       <RefColNames>ot_id</RefColNames>
     </foreign-key>
-    <column id="40" parent="17" name="pt_id">
+    <column id="42" parent="18" name="pt_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -210,28 +220,57 @@
       <SequenceName>productstable_pt_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;productstable_pt_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="41" parent="17" name="productname">
+    <column id="43" parent="18" name="productname">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>604</StateNumber>
     </column>
-    <column id="42" parent="17" name="price">
+    <column id="44" parent="18" name="price">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <StateNumber>631</StateNumber>
     </column>
-    <index id="43" parent="17" name="product_pkey">
+    <index id="45" parent="18" name="product_pkey">
       <ObjectId>16919</ObjectId>
       <ColNames>pt_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="44" parent="17" name="product_pkey">
+    <key id="46" parent="18" name="product_pkey">
       <ObjectId>16920</ObjectId>
       <ColNames>pt_id</ColNames>
       <UnderlyingIndexName>product_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="45" parent="18" name="user_id">
+    <column id="47" parent="19" name="user_role_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>730</StateNumber>
+      <SequenceName>user_role_user_role_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;user_role_user_role_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="48" parent="19" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>747</StateNumber>
+    </column>
+    <column id="49" parent="19" name="role">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>730</StateNumber>
+    </column>
+    <index id="50" parent="19" name="user_role_pkey">
+      <ObjectId>25046</ObjectId>
+      <ColNames>user_role_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="19" name="user_role_pkey">
+      <ObjectId>25047</ObjectId>
+      <ColNames>user_role_id</ColNames>
+      <UnderlyingIndexName>user_role_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="52" parent="20" name="user_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -239,22 +278,22 @@
       <SequenceName>users_user_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="46" parent="18" name="user_name">
+    <column id="53" parent="20" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>604</StateNumber>
+      <StateNumber>745</StateNumber>
     </column>
-    <column id="47" parent="18" name="user_pass">
+    <column id="54" parent="20" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>604</StateNumber>
+      <StateNumber>746</StateNumber>
     </column>
-    <index id="48" parent="18" name="user_pkey">
+    <index id="55" parent="20" name="user_pkey">
       <ObjectId>16911</ObjectId>
       <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="18" name="user_pkey">
+    <key id="56" parent="20" name="user_pkey">
       <ObjectId>16912</ObjectId>
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>

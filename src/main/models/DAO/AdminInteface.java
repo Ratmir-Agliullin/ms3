@@ -12,7 +12,7 @@ public interface AdminInteface {
 
     void UpdateAdminTable(Admin userTable);
 
-    public void DeleteAdminTable();
+    public void DeleteAdminTable(int id);
     public void InsertAdminTable();
 
     void InsertAdminTable(Admin userTable);

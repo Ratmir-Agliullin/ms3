@@ -19,4 +19,5 @@ public interface UsersInterface {
     void InsertUserTable(Users userTable);
     public void DeleteAllUserTable();
     public List<Users> SelectUserTable();
+    public int SelectIdFromName(String username);
 }

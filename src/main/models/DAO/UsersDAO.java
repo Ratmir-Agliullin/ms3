@@ -1,6 +1,7 @@
 package main.models.DAO;
 
 import main.models.pojo.Users;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class UsersDAO implements UsersInterface{
         Connection connection = initConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "update users set user_pass = ? where id=?");
+                    "update users set password = ? where id=?");
             preparedStatement.setString(1, userTable.getPassName());
             preparedStatement.setInt(2, userTable.getId());
 
@@ -121,7 +122,7 @@ public class UsersDAO implements UsersInterface{
 //                    myConnection2.prepareStatement("INSERT INTO  users(user_name,user_pass) VALUES (?,?)");
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                   "INSERT INTO  users(user_name,user_pass) VALUES (?,?)");
+                   "INSERT INTO  users(username,password) VALUES (?,?)");
             preparedStatement.setString(1, userTable.getUserName());
             preparedStatement.setString(2, userTable.getPassName());
 
@@ -161,6 +162,23 @@ public class UsersDAO implements UsersInterface{
         return userTableAL;
     }
 
+    @Override
+    public int SelectIdFromName(String username) {
+        Connection connection = initConnection();
+       int user_id=0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result =
+                    statement.executeQuery("select user_id from public.users WHERE username='" + username+"'" );
+            while (result.next())
+           user_id=result.getInt(1);
+
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return user_id;
+    }
+
     public String SelectUserPassTable(String login) {
         Connection connection = initConnection();
        String resultPass=null;
@@ -169,7 +187,7 @@ public class UsersDAO implements UsersInterface{
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "select user_pass from public.users where user_name = ?");
+                    "select user_pass from public.users where username = ?");
             preparedStatement.setString(1, login);
             ResultSet result = preparedStatement.executeQuery();
             resultPass = result.getString(1);

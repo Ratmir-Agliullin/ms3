@@ -34,14 +34,14 @@
     <!--<servlet-name>LoginServlet</servlet-name>-->
     <!--<url-pattern>/login</url-pattern>-->
   <!--</servlet-mapping>-->
-  <servlet>
-    <servlet-name>EditServlet</servlet-name>
-    <servlet-class>main.servlets.EditServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EditServlet</servlet-name>
-    <url-pattern>/edit</url-pattern>
-  </servlet-mapping>
+  <!--<servlet>-->
+    <!--<servlet-name>EditServlet</servlet-name>-->
+    <!--<servlet-class>main.servlets.EditServlet</servlet-class>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>EditServlet</servlet-name>-->
+    <!--<url-pattern>/edit</url-pattern>-->
+  <!--</servlet-mapping>-->
   <!--<servlet>-->
     <!--<servlet-name>AllUsersServlet</servlet-name>-->
     <!--<servlet-class>main.servlets.allUsersServlet</servlet-class>-->
@@ -62,14 +62,19 @@
     <!--<servlet-name>UserInfo</servlet-name>-->
     <!--<servlet-class>main.servlets.UserInfoServlet</servlet-class>-->
   <!--</servlet>-->
-  <servlet>
-    <servlet-name>LogOut</servlet-name>
-    <servlet-class>main.servlets.LogoutServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LogOut</servlet-name>
-    <url-pattern>/logOut</url-pattern>
-  </servlet-mapping>
+
+
+  <!--<servlet>-->
+    <!--<servlet-name>LogOut</servlet-name>-->
+    <!--<servlet-class>main.servlets.LogoutServlet</servlet-class>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>LogOut</servlet-name>-->
+    <!--<url-pattern>/logOut</url-pattern>-->
+  <!--</servlet-mapping>-->
+
+
+
   <!--<servlet-mapping>-->
     <!--<servlet-name>UserInfo</servlet-name>-->
     <!--<url-pattern>/userInfo</url-pattern>-->
@@ -90,41 +95,53 @@
     <!--<servlet-name>AddedUser</servlet-name>-->
     <!--<url-pattern>/newUserAdded</url-pattern>-->
   <!--</servlet-mapping>-->
+  <!--<filter>-->
+    <!--<filter-name>CurrentFilter</filter-name>-->
+    <!--<filter-class>main.services.Filters.CurrentFilter</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>CurrentFilter</filter-name>-->
+    <!--<url-pattern>/userInfo</url-pattern>-->
+  <!--</filter-mapping>-->
+  <!--<filter>-->
+    <!--<filter-name>AuthFilter</filter-name>-->
+    <!--<filter-class>main.services.Filters.AuthFilter</filter-class>-->
+  <!--</filter>-->
+
+    <!--<filter-mapping>-->
+    <!--<filter-name>AuthFilter</filter-name>-->
+    <!--<url-pattern>/allUsers</url-pattern>-->
+      <!--</filter-mapping>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>AuthFilter</filter-name>-->
+    <!--<url-pattern>/newAdminAdd</url-pattern>-->
+  <!--</filter-mapping>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>AuthFilter</filter-name>-->
+    <!--<url-pattern>/newAdminAdded</url-pattern>-->
+  <!--</filter-mapping>-->
+
+
+
   <filter>
-    <filter-name>CurrentFilter</filter-name>
-    <filter-class>main.servlets.services.Filters.CurrentFilter</filter-class>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
-  <filter-mapping>
-    <filter-name>CurrentFilter</filter-name>
-    <url-pattern>/userInfo</url-pattern>
-  </filter-mapping>
-  <filter>
-    <filter-name>AuthFilter</filter-name>
-    <filter-class>main.servlets.services.Filters.AuthFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AuthFilter</filter-name>
-    <url-pattern>/allUsers</url-pattern>
-      </filter-mapping>
-  <!--<servlet>-->
-    <!--<servlet-name>RepeatLoginUser</servlet-name>-->
-    <!--<servlet-class>main.servlets.RepeatLoginServlet</servlet-class>-->
-  <!--</servlet>-->
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>RepeatLoginUser</servlet-name>-->
-    <!--<url-pattern>/repeatLoginUser</url-pattern>-->
-  <!--</servlet-mapping>-->
-  <!--<listener>-->
-    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-  <!--</listener>-->
-  <!--<context-param>-->
-    <!--<param-name>contextConfigLocation</param-name>-->
-    <!--<param-value>WEB-INF/beans.xml</param-value>-->
-  <!--</context-param>-->
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+      <!--<dispatcher>REQUEST</dispatcher>-->
+    </filter-mapping>
+
+
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/LoginServlet-servlet.xml</param-value>
+    <param-value>
+      /WEB-INF/spring-security.xml
+    /WEB-INF/spring-database.xml
+    /WEB-INF/LoginServlet-servlet.xml
+    </param-value>
   </context-param>
   <listener>
     <listener-class>

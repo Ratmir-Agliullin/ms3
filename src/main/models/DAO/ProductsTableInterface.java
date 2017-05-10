@@ -21,4 +21,5 @@ public interface ProductsTableInterface {
     void InsertProductsTable(Product productsTable);
 
     public List<Product> SelectProductsTable();
+    public Product getProductById(int id);
 }

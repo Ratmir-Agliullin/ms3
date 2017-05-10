@@ -61,11 +61,12 @@ public class AdminDAO implements AdminInteface {
     /**
      * Delete table
      */
-    public void DeleteAdminTable() {
+    public void DeleteAdminTable(int id) {
         Connection connection = initConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "delete from admins");
+                    "delete from admins WHERE admin_id=?");
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.info(e.toString());

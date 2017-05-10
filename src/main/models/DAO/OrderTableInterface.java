@@ -11,7 +11,7 @@ public interface OrderTableInterface {
     public void UpdateOrderTable();
 
     void UpdateOrderTable(Order orderTable);
-
+    public void DeleteOrderById(int id);
     public void DeleteOrderTable();
     public void InsertOrderTable();
 

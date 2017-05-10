@@ -22,21 +22,5 @@ public class AddedUserServlet extends HttpServlet {
         mav.setViewName("newUserAdded");
         return mav;
     }
-//
-//    @Override
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
-//                config.getServletContext());
-//    }
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getRequestDispatcher("/newUserAdded.jsp").forward(req,resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//
-//    }
+
 }

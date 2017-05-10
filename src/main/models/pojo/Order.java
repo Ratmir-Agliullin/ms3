@@ -71,7 +71,7 @@ public class Order {
     @Override
     public String toString() {
         return "OrderTable{" +
-                "id=" + id +
+
                 ", orderName='" + orderName + '\'' +
                 ", userName=" + userName +
                 ", time=" + time +

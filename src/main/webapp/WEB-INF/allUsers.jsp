@@ -27,6 +27,9 @@ ${list}<br>
         </tr>
     </table>
 </c:forEach><br>
-<input onclick="location.href='/logOut'"   class="login loginmodal-submit" type="submit" value="logout" style="float: right;">
+<input onclick="location.href='/allAdmins'"   class="login loginmodal-submit" type="submit" value="allAdmins" style="float: right;">
+<input onclick="location.href='/allOrders'"   class="login loginmodal-submit" type="submit" value="allOrders" style="float: right;">
+<input onclick="location.href='/newAdminAdd'"   class="login loginmodal-submit" type="submit" value="Add new admin" style="float: right;">
+<input onclick="location.href='<c:url value="/j_spring_security_logout" />'"   class="login loginmodal-submit" type="submit" value="logout" style="float: right;">
 </body>
 </html>

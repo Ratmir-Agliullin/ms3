@@ -1,7 +1,10 @@
-package main.servlets.services;
+package main.services;
 
 import main.models.DAO.AdminDAO;
 import main.models.pojo.Admin;
+import main.models.pojo.UserRole;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,8 +17,12 @@ import java.util.List;
 public class AdminService {
 
   private   AdminDAO adminDAO = new AdminDAO();
-
- //   @Autowired
+  private UserRoleService userRoleService;
+@Autowired
+    public void setUserRoleService(UserRoleService userRoleService) {
+        this.userRoleService = userRoleService;
+    }
+    //   @Autowired
 //    public void setAdminDAO(AdminDAO adminDAO) {
 //        this.adminDAO = adminDAO;
 //    }
@@ -38,7 +45,7 @@ public class AdminService {
         for (Admin admin : adminDAO.SelectAdminTable()
                 ) {
 
-            if ((admin.getAdminName().equals(login)) && (admin.getAdminPass().equals(pass))) {
+            if ((admin.getAdminName().equals(login)) && (BCrypt.checkpw(pass,admin.getAdminPass())))  {
 
                 return true;
             }
@@ -68,5 +75,10 @@ public class AdminService {
     }
     public void InsertInAdmin(Admin admin){
         adminDAO.InsertAdminTable(admin);
+        UserRole userRole = new UserRole();
+        userRole.setUser_name(admin.getAdminName());
+        userRole.setRole("admin");
+        userRoleService.InsertNewUserRole(userRole);
     }
+    public void DeleteAdminById(int id){adminDAO.DeleteAdminTable(id);};
 }

@@ -2,6 +2,7 @@ package main.models.DAO;
 
 import main.models.pojo.Order;
 import main.models.pojo.Users;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.logging.Logger;
 /**
  * Created by admin on 24.04.2017.
  */
+@Service
 public class OrderDAO implements OrderTableInterface {
     private static Logger log = Logger.getLogger(OrderDAO.class.getName());
     public Connection initConnection(){
@@ -50,6 +52,18 @@ public class OrderDAO implements OrderTableInterface {
         }
     }
 
+    public void DeleteOrderById(int id) {
+        Connection connection = initConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "delete from public.orderstable WHERE ot_id="+id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+    }
+
+
     public void InsertOrderTable() {
 
     }
@@ -58,13 +72,12 @@ public class OrderDAO implements OrderTableInterface {
         Connection connection = initConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO  orderstable(ot_id, user_name_id, result_price, time_order, status,ordername) VALUES (?,?,?,?,?,?)");
-            preparedStatement.setInt(1, order.getId());
-            preparedStatement.setInt(2, order.getUser_id());
-            preparedStatement.setInt(3, order.getResultPrice());
-            preparedStatement.setLong(4, order.getTime());
-            preparedStatement.setString(5, order.getStatus());
-            preparedStatement.setString(6, order.getOrderName());
+                    "INSERT INTO  orderstable( user_name_id, result_price, time_order, status,ordername) VALUES (?,?,?,?,?)");
+                  preparedStatement.setInt(1, order.getUser_id());
+            preparedStatement.setInt(2, order.getResultPrice());
+            preparedStatement.setLong(3, order.getTime());
+            preparedStatement.setString(4, order.getStatus());
+            preparedStatement.setString(5, order.getOrderName());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             log.info(e.toString());
@@ -100,5 +113,52 @@ public class OrderDAO implements OrderTableInterface {
             log.info(e.toString());
         }
         return orderTableAL;
+    }
+
+    public int SelectOrderId(Order order){
+        int res=0;
+        Connection connection = initConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result =
+                    statement.executeQuery("select ot_id from public.orderstable where ordername='"+
+                            order.getOrderName()+"'");
+            while (result.next())
+            res = result.getInt(1);
+
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return res;
+    }
+
+    public List<Order> SelectOrderByUserId(int id){
+
+        List<Order> orderList = new ArrayList<>();
+        Connection connection = initConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result =
+                    statement.executeQuery("select * from public.orderstable"+
+                            "  inner join users on orderstable.user_name_id = users.user_id where user_name_id="+id);
+            while (result.next()) {
+                Order order = new Order();
+                order.setUser_id(result.getInt(2));
+                order.setResultPrice(result.getInt(3));
+                order.setTime(result.getLong(4));
+                order.setStatus(result.getString(5));
+                order.setOrderName(result.getString(6));
+                Users user = new Users();
+                user.setUserName(result.getString(8));
+                user.setPassName(result.getString(9));
+                order.setUserName(user);
+                orderList.add(order);
+            }
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return orderList;
     }
 }

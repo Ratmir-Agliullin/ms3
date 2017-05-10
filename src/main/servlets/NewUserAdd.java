@@ -2,7 +2,7 @@ package main.servlets;
 
 import main.models.pojo.LoginEntity;
 import main.models.pojo.Users;
-import main.servlets.services.UserService;
+import main.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,9 +42,9 @@ public class NewUserAdd extends HttpServlet{
         ModelAndView mav = new ModelAndView();
         String pass = BCrypt.hashpw(loginEntity.getPassword(), BCrypt.gensalt());
         Users users = new Users();
-      users.setUserName(loginEntity.getUsername());
-      users.setPassName(pass);
-      String nextPath = null;
+        users.setUserName(loginEntity.getUsername());
+        users.setPassName(pass);
+        String nextPath = null;
         if(userService.UserLoginRepeatCheck(loginEntity.getUsername())==false) {
             userService.InsertInTable(users);
             req.getSession().setAttribute("newuser", "Новый пользователь: " + loginEntity.getUsername() + " успешно добавлен");
@@ -56,47 +56,10 @@ public class NewUserAdd extends HttpServlet{
             nextPath = "repeatLoginUser";
         }
 
-return nextPath;
+        return nextPath;
 
     }
 
 
-//    @Override
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
-//                config.getServletContext());
-//    }
-//
-//    /**
-//     * Create new user
-//     * @param req
-//     * @param resp
-//     * @throws ServletException
-//     * @throws IOException
-//     */
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getRequestDispatcher("/newUserAdd.jsp").forward(req,resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        UsersDAO usersDAO = new UsersDAO();
-//        String pass1 = req.getParameter("password");
-//        String pass = BCrypt.hashpw(pass1, BCrypt.gensalt());
-//        String login = req.getParameter("username");
-//        Users users = new Users();
-//        users.setUserName(login);
-//        users.setPassName(pass);
-//       // UserService userService = new UserService();
-//        if(userService.UserLoginRepeatCheck(login)==false) {
-//        userService.InsertInTable(users);
-//        req.getSession().setAttribute("newuser", "Новый пользователь: "+ login+" успешно добавлен");
-//        resp.sendRedirect(req.getContextPath() + "/newUserAdded");}
-//        else {
-//            req.getSession().setAttribute("check", "Ваш логин уже есть в списке пользователей. Выберете другой логин");
-//            resp.sendRedirect(req.getContextPath() + "/repeatLoginUser");
-//        }
-//    }
+
 }

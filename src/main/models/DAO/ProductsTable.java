@@ -1,6 +1,7 @@
 package main.models.DAO;
 
 import main.models.pojo.Product;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 /**
  * Created by admin on 24.04.2017.
  */
+@Service
 public class ProductsTable implements ProductsTableInterface {
     private static Logger log = Logger.getLogger(OrderDAO.class.getName());
     public Connection initConnection(){
@@ -61,6 +63,10 @@ public class ProductsTable implements ProductsTableInterface {
         }
     }
 
+
+
+
+
     public List<Product> SelectProductsTable() {
         Connection connection = initConnection();
         List<Product> productsTableAL = new ArrayList<Product>();
@@ -81,5 +87,26 @@ public class ProductsTable implements ProductsTableInterface {
             log.info(e.toString());
         }
         return productsTableAL;
+    }
+
+    @Override
+    public Product getProductById(int id) {
+        Connection connection = initConnection();
+        Product product = new Product();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "select * from public.productstable WHERE pt_id=" + id;
+            ResultSet result =statement.executeQuery(query);
+            while (result.next()) {
+                product.setId(result.getInt(1));
+                product.setProductName(result.getString(2));
+                product.setProductPrice(result.getInt(3));
+            }
+
+
+        } catch (SQLException e) {
+            log.info(e.toString());
+        }
+        return product;
     }
 }
